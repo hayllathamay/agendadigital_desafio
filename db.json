@@ -1,5 +1,5 @@
 {
-    "anotacoes": [
-      { "id": 1, "title": "Teste 1 - anotações diárias" }
-    ]
-  }
+    "events": [],
+    "notes": [],
+    "reminders": []
+}
