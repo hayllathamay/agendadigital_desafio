@@ -3,14 +3,14 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f8f0f4; /* Rosa suave de fundo */
+    background-color: #f8f0f4; 
   }
   
   .calendar {
     width: 300px;
-    background-color: #f5d0e1; /* Rosa suave para o calendário */
+    background-color: #f5d0e1; 
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     padding: 20px;
     text-align: center;
   }
@@ -25,12 +25,12 @@
   .month-year {
     font-size: 18px;
     font-weight: bold;
-    color: #4b2e42; /* Cor do texto */
+    color: #4b2e42; 
   }
   
   .nav-button {
-    background-color: #e0a4b5; /* Rosa claro para os botões de navegação */
-    color: #4b2e42; /* Cor do texto dos botões */
+    background-color: #e0a4b5; 
+    color: #4b2e42; 
     border: none;
     padding: 8px 12px;
     border-radius: 5px;
@@ -39,7 +39,7 @@
   }
   
   .nav-button:hover {
-    background-color: #c77f92; /* Altera a cor de fundo ao passar o mouse */
+    background-color: #c77f92; 
   }
   
   .week-days {
@@ -52,8 +52,8 @@
     width: 30px;
     height: 30px;
     line-height: 30px;
-    background-color: #e0a4b5; /* Rosa claro para os dias da semana */
-    color: #4b2e42; /* Cor do texto */
+    background-color: #e0a4b5; 
+    color: #4b2e42; 
     font-weight: bold;
     border-radius: 5px;
   }
@@ -68,12 +68,12 @@
     height: 30px;
     line-height: 30px;
     margin: 2px;
-    background-color: #f5d0e1; /* Rosa suave para os dias do calendário */
+    background-color: #f5d0e1; 
     border-radius: 5px;
   }
   
   .day-number {
-    color: #4b2e42; /* Cor do número do dia */
+    color: #4b2e42; 
     font-weight: bold;
   }
   

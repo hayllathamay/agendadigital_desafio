@@ -1,9 +1,10 @@
-<div class="notes">
-    <h2>Anotações</h2>
-    <ul class="list-group">
-      <!-- Lista de anotações -->
-      <li class="list-group-item">Nota 1</li>
-      <li class="list-group-item">Nota 2</li>
-    </ul>
-  </div>
+<div class="notes-container">
+  <div class="notes-title">Suas Anotações</div>
   
+  <textarea class="notes-textarea" [(ngModel)]="userNotes" placeholder="Digite suas anotações aqui..."></textarea>
+  
+  <div>
+    <button class="notes-button save" (click)="saveNotes()">Salvar</button>
+    <button class="notes-button delete" (click)="deleteNotes()">Excluir</button>
+  </div>
+</div>
