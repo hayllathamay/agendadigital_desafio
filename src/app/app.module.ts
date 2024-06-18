@@ -12,6 +12,7 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HomeComponent } from './views/home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { HomeComponent } from './views/home/home.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-  
+
   ],
   imports: [
     BrowserModule,
