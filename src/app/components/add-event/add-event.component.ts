@@ -1,37 +1,77 @@
 import { Component, OnInit } from '@angular/core';
-//import { EventService } from '@app/services/event.service';
+import { EventInterface } from '@app/interfaces/event';
 import { EventService } from '@app/services/event.service';
+
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
   styleUrl: './add-event.component.scss'
 })
 export class AddEventComponent implements OnInit {
-  event: any = {};
+  events: EventInterface[] = [];
+  newEvent: EventInterface = { title: '', description: '', date: '' };
+  editingEvent: EventInterface | null = null;
+  id: any;
 
-constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
+    this.fetchEvents();
   }
 
-  saveEvent(): void {
-    this.eventService.saveEvent(this.event).subscribe(
-      () =>{
-        console.log('Evento salvo com sucesso"');
-        alert('Evento salvo com sucesso!');
-        this.event = {};
-      },
-      error => {
-        console.error('Erro ao salvar evento:', error);
-        alert('Erro a salvar evento. Verifique o console para obter mais dedtalhes');
-      }
-    );
+  fetchEvents(): void {
+    this.eventService.getEvents().subscribe(
+      (events: EventInterface[]) => {
+        this.events = events.map((event: EventInterface) => ({
+          id: event.id,
+          title: event.title,
+          description: event.description,
+          date: event.date
+        }));
+      });
   }
-  /*saveEvent(): void {
-    this.eventService.saveEvent(this.event).subscribe(() => {
-      console.log('Evento salvo com sucesso!');
-      alert('Evento salvo com sucesso!');
-      this.event = {}; 
-    })
-  }*/
+
+  addEvent(): void {
+    if (this.editingEvent) {
+      this.eventService.updateEvent(this.id, this.newEvent).subscribe((updatedEvent: any) => {
+        const index = this.events.findIndex(e => e.id === updatedEvent.id);
+        if (index !== -1) {
+          this.events[index] = updatedEvent;
+          this.newEvent = { title: '', description: '', date: '' };
+          this.editingEvent = null;
+          console.log('Evento atualizado com sucesso!');
+          alert('Evento atualizado com sucesso!');
+        }
+      });
+    } else {
+      this.eventService.addEvent(this.newEvent).subscribe(
+        (events: EventInterface) => {
+          this.events.push(events);
+          this.newEvent = { title: '', description: '', date: '' };
+          console.log('Evento adicionado com sucesso!');
+          alert('Evento adicionado com sucesso!');
+        }, error => {
+          console.error('Erro ao adicionar evento:', error);
+          alert('Erro ao adicionar evento. Verifique o console para mais detalhes.');
+        });
+    }
+  }
+
+  editEvent(event: EventInterface): void {
+    this.editingEvent = { ...event };
+    this.newEvent = { ...event };
+    this.id = this.editingEvent.id;
+  }
+
+  deleteEvent(id: any): void {
+    console.log('id', id)
+    this.eventService.deleteEvent(id).subscribe(() => {
+      this.events = this.events.filter(event => event.id !== id);
+      console.log('Evento excluído com sucesso!');
+      alert('Evento excluído com sucesso!');
+    }, error => {
+      console.error('Erro ao excluir evento:', error);
+      alert('Erro ao excluir evento. Verifique o console para mais detalhes.');
+    });
+  }
 }

@@ -1,5 +1,12 @@
 {
-    "events": [],
-    "notes": [],
-    "reminders": []
+  "events": [
+    {
+      "id": "601b",
+      "title": "Teste",
+      "description": "Teste desc 1",
+      "date": "2024-01-01"
+    }
+  ],
+  "notes": [],
+  "reminders": []
 }

@@ -9,6 +9,23 @@
     text-decoration: none;
     color: #333;
 }
+
 .header .logo {
     max-height: 32px;
+}
+
+.header-container {
+    background-color: #880e4f;
+    color: white;
+    padding: 10px 0;
+}
+
+.header-container a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header-container a:hover {
+    color: #f8bbd0;
 }

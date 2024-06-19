@@ -1,39 +1,70 @@
 import { Component, OnInit } from '@angular/core';
 import { NotesService } from '@app/services/notes.service';
 
+interface Note {
+  id?: number;
+  title: string;
+  content: string;
+}
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-  userNotes: string = ''; 
+  notes: Note[] = [];
+  newNote: Note = { title: '', content: '' };
+  editinfNotes: Note | null = null
+  userNotes: string = '';
 
   constructor(private notesService: NotesService) { }
 
   ngOnInit(): void {
-    this.loadNotes(); 
+    this.fetchNotes();
+    this.loadNotes();
+  }
+
+  fetchNotes(): void {
+    this.notesService.getNotes().subscribe(notes => {
+      this.notes = notes;
+    });
+  }
+
+  addNote(): void {
+    if (this.newNote.title && this.newNote.content) {
+      this.notesService.addNote(this.newNote).subscribe(note => {
+        this.notes.push(note);
+        this.newNote = { title: '', content: '' };
+      });
+    }
   }
 
   saveNotes(): void {
-    this.notesService.saveNotes(this.userNotes).subscribe(() => {
-      console.log('Anotações salvas com sucesso!');
-      alert('Anotações salvas com sucesso!');
-    });
+    if (this.userNotes) {
+      this.notesService.saveNotes(this.userNotes).subscribe(() => {
+        console.log('Anotações salvas com sucesso!');
+        alert('Anotações salvas com sucesso!');
+      });
+    }
   }
 
-  deleteNotes(): void {
-    this.notesService.deleteNotes(1).subscribe(() => {
-      console.log('Anotações excluídas com sucesso!');
-      this.userNotes = ''; 
-      alert('Anotações excluídas com sucesso!');
-    });
-  }
+    deleteNotes(id: number | undefined): void {
+      if (id !== undefined){
+        this.notesService.deleteNotes(id).subscribe(() => {
+          this.notes = this.notes.filter(note => note.id !== id);
+          console.log('Anotações excluídas com sucesso!');
+          alert('Anotações excluídas com sucesso!');
+        });
+      } else{
+        console.error("ID da anotação é indefinida. Não é possível excluir")
+      }
+      
+    }
 
   private loadNotes(): void {
     this.notesService.getNotes().subscribe((data: any[]) => {
       if (data.length > 0) {
-        this.userNotes = data[0].content; 
+        this.userNotes = data.map(note => note.content).join('\n');
       }
     });
   }

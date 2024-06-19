@@ -7,13 +7,11 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
-import { RemindersComponent } from './components/reminders/reminders.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HomeComponent } from './views/home/home.component';
-import { NotesService } from './services/notes.service';
-import { EventService } from './services/add-event.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,23 +19,19 @@ import { EventService } from './services/add-event.service';
     CalendarComponent,
     NotesComponent,
     AddEventComponent,
-    RemindersComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-
   providers: [
-    provideAnimationsAsync(),
-    NotesService,
-    EventService
-    
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
