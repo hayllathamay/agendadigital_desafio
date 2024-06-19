@@ -1,31 +1,49 @@
-.add-event {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.btn-outline-pink {
-  color: #ff6b9b;
-  border-color: #ff6b9b;
-}
-
-.btn-outline-pink:hover {
-  background-color: #ff6b9b;
-  color: white;
-}
-
 .add-event-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  h2 {
+    color: #000000; 
+  }
 
-.event-form {
-  margin-bottom: 20px;
-}
+  .event-form {
+    background-color: #ffe4e1; // Fundo rosa suave para o formulário
+    padding: 20px;
+    border-radius: 10px;
 
-.event-list .card {
-  background-color: #fce4ec;
+    h4 {
+      color: #000000;
+    }
+
+    .form-label {
+      color: #ff69b4;
+    }
+
+    .btn-primary {
+      background-color: #ff69b4;
+      border-color: #ff69b4;
+    }
+  }
+
+  .event-list {
+    .card {
+      border-color: #ff69b4;
+      
+      .card-body {
+        background-color: #ffe4e1;
+
+        .card-title {
+          color: #ff69b4;
+        }
+
+        .btn-warning {
+          background-color: #ff69b4;
+          border-color: #ff69b4;
+          color: #fff;
+        }
+
+        .btn-danger {
+          background-color: #ff69b4;
+          border-color: #ff69b4;
+        }
+      }
+    }
+  }
 }

@@ -3,16 +3,17 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f8f0f4; 
+    background-color: #ffffff; 
   }
   
   .calendar {
-    width: 300px;
+    width: 320px;
     background-color: #f5d0e1; 
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     padding: 20px;
     text-align: center;
+    border: 2px solid #4b2e42
   }
   
   .month-header {
@@ -36,6 +37,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: bold;
   }
   
   .nav-button:hover {
@@ -49,9 +51,9 @@
   }
   
   .week-day {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
     background-color: #e0a4b5; 
     color: #4b2e42; 
     font-weight: bold;
