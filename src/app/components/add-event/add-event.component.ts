@@ -39,7 +39,6 @@ export class AddEventComponent implements OnInit {
           this.events[index] = updatedEvent;
           this.newEvent = { title: '', description: '', date: '' };
           this.editingEvent = null;
-          console.log('Evento atualizado com sucesso!');
           alert('Evento atualizado com sucesso!');
         }
       });
@@ -48,7 +47,6 @@ export class AddEventComponent implements OnInit {
         (events: EventInterface) => {
           this.events.push(events);
           this.newEvent = { title: '', description: '', date: '' };
-          console.log('Evento adicionado com sucesso!');
           alert('Evento adicionado com sucesso!');
         }, error => {
           console.error('Erro ao adicionar evento:', error);
@@ -64,10 +62,8 @@ export class AddEventComponent implements OnInit {
   }
 
   deleteEvent(id: any): void {
-    console.log('id', id)
     this.eventService.deleteEvent(id).subscribe(() => {
       this.events = this.events.filter(event => event.id !== id);
-      console.log('Evento excluído com sucesso!');
       alert('Evento excluído com sucesso!');
     }, error => {
       console.error('Erro ao excluir evento:', error);

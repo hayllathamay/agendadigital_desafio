@@ -42,7 +42,6 @@ export class NotesComponent implements OnInit {
   saveNotes(): void {
     if (this.userNotes) {
       this.notesService.saveNotes(this.userNotes).subscribe(() => {
-        console.log('Anotações salvas com sucesso!');
         alert('Anotações salvas com sucesso!');
       });
     }
@@ -52,7 +51,6 @@ export class NotesComponent implements OnInit {
       if (id !== undefined){
         this.notesService.deleteNotes(id).subscribe(() => {
           this.notes = this.notes.filter(note => note.id !== id);
-          console.log('Anotações excluídas com sucesso!');
           alert('Anotações excluídas com sucesso!');
         });
       } else{
